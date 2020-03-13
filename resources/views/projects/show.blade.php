@@ -11,12 +11,41 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-4" style="background:white;">
-                <h2>{{ $project->name }}</h2>
-                <p>{{ $project->description }}</p>
-                <p><a class="btn btn-primary" href="/projects/{{ $project->id }}" role="button">View Project »</a></p>
-            </div>
+        <div class="row container-fluid">
+            {!! Form::open(['route' => ['comments.store']]) !!}
+                {{ csrf_field() }}
+
+                <input type="hidden" name="commentable_type" value="App\Project">
+                <input type="hidden" name="commentable_id" value="{{$project->id}}">
+
+
+                <div class="form-group">
+                    <label for="comment-content">Comment</label>
+                    <textarea placeholder="Enter comment" 
+                        style="resize: vertical" 
+                        id="comment-content"
+                        name="body"
+                        rows="3" spellcheck="false"
+                        class="form-control autosize-target text-left">
+                    </textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="comment-content">Proof of work done (Url/Photos)</label>
+                    <textarea placeholder="Enter url or screenshots" 
+                        style="resize: vertical" 
+                        id="comment-content"
+                        name="url"
+                        rows="2" spellcheck="false"
+                        class="form-control autosize-target text-left">
+                    </textarea>
+                </div>
+
+
+                    <div class="form-group">
+                        <input type="submit" name="" value="Submit" class="btn btn-primary">
+                    </div>
+            {!! Form::close() !!}
             <hr>
         </div>
     </div>
