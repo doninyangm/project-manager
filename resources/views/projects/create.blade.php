@@ -16,7 +16,20 @@
                     <label for="description">Description</label>
                     <textarea rows="6" cols="20" name="description" id="description" placeholder="Enter project description"></textarea>
                 </div>
+
+                @if($companies != null)
+                    <div class="form-group">
+                        <label for="companies">Select company</label>
+                        <select name="company_id" id="companies">
+                            @foreach($companies as $company)
+                                <option value="{{$company->id}}">{{$company->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                @endif
+                @if($companies == null)
                 <input type="hidden" name="company_id" value="{{ $company_id }}" >
+                @endif
                 <div class="form-group">
                     <input type="submit" name="" value="Submit" class="btn btn-primary">
                 </div>
