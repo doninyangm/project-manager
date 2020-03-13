@@ -21,7 +21,8 @@
         </div>
     </div>
 
-    <div class="col-md-2 col-xl-2 bd-sidebar">                      <div class="sidebar-module">
+    <div class="col-md-2 col-xl-2 bd-sidebar">
+        <div class="sidebar-module">
             <h4>Actions</h4>
             <ul class="list-unstyled">
                 <li class=""><a href="/projects/{{ $project->id }}/edit">Edit</a></li>
