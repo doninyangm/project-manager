@@ -28,22 +28,25 @@
                 <li class=""><a href="/projects/create">Create new project</a></li>
                 <li class=""><a href="/projects">My  projects</a></li>
                 <hr>
-                <li class="">
-                    <a href="#"
-                        onclick="var result = confirm('Are you sure you wish to delete this Project');
-                        if(result){
-                            event.preventDefault();
-                            document.getElementById('delete-form').submit();
-                        }"
-                    >Delete</a>
 
-                    {!! Form::open(['route' => ['projects.update', $project->id], 'id' => 'delete-form']) !!}
-                    <!-- <form id="delete-form" action="{{ route('projects.destroy', [$project->id]) }}"> -->
-                        {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="delete">
-                    <!-- </form> -->
-                    {!! Form::close() !!}
-                </li>
+                @if($project->user_id == Auth::user()->id)
+                    <li class="">
+                        <a href="#"
+                            onclick="var result = confirm('Are you sure you wish to delete this Project');
+                            if(result){
+                                event.preventDefault();
+                                document.getElementById('delete-form').submit();
+                            }"
+                        >Delete</a>
+
+                        {!! Form::open(['route' => ['projects.update', $project->id], 'id' => 'delete-form']) !!}
+                        <!-- <form id="delete-form" action="{{ route('projects.destroy', [$project->id]) }}"> -->
+                            {{ csrf_field() }}
+                            <input type="hidden" name="_method" value="delete">
+                        <!-- </form> -->
+                        {!! Form::close() !!}
+                    </li>
+                @endif
                 <!-- <li class=""><a href="#">Add new User</a></li> -->
             </ul>
         </div>
