@@ -48,6 +48,15 @@
             {!! Form::close() !!}
             <hr>
         </div>
+
+        @foreach($project->comments as $comment)
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <h2>{{ $comment->body }}</h2>
+                <p class="text-damger">{{$comment->url}}</p>
+                <p><a class="btn btn-primary" href="/projects/{{$project->id}}" role="button">View Project</a></p>
+            </div>
+        @endforeach
+        
     </div>
 
     <div class="col-md-2 col-xl-2 bd-sidebar">
